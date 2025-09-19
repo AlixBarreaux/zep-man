@@ -1,3 +1,24 @@
-# Godot 4+ specific ignores
+# Godot metadata
 .godot/
+
+# Godot generated import files
+.import/
+
+# Exported game builds
+/dist/*
+!/dist/.gitkeep
+
+
+# Temporary / backup / merge / conflict files
+*.tmp
+*.converted.*
+*.orig
+
+# OS specific junk
+.DS_Store
+Thumbs.db
+
+# Compiled binary translations
+*.mo
+
 export_presets.cfg
