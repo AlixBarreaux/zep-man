@@ -27,12 +27,6 @@ var point_to_gain_life_base_cap: int = 4500
 var points_to_gain_life_cap: int = point_to_gain_life_base_cap
 
 
-func reset() -> void:
-	is_game_over = false
-	set_score(0)
-	set_lives(initial_lives)
-
-
 func set_lives(value: int) -> void:
 	lives = value
 	self.lives_changed.emit()
@@ -53,6 +47,10 @@ func decrease_lives(value: int = 1) -> void:
 	
 	set_lives(remaining_lives)
 	Global.player_died.emit()
+
+
+func set_max_lives(value: int) -> void:
+	max_lives = value
 
 
 var score: int = 0:
@@ -80,6 +78,13 @@ var high_score: int = 0
 func set_high_score(value: int) -> void:
 	high_score = value
 	self.high_score_changed.emit()
+
+
+func reset() -> void:
+	is_game_over = false
+	set_score(0)
+	set_lives(initial_lives)
+	set_max_lives(5)
 
 
 const SAVE_GAME_FILE_PATH: String = "user://game_save.res"
