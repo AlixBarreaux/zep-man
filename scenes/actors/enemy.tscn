@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://b8ju6rj3bx3w2"]
 
-[ext_resource type="Script" path="res://scripts/actors/enemy.gd" id="1_umwy5"]
+[ext_resource type="Script" uid="uid://c68jg7tnsfgou" path="res://scripts/actors/enemy.gd" id="1_umwy5"]
 [ext_resource type="Texture2D" uid="uid://bbuaqyqmhbpyi" path="res://assets/sprites/characters_animations.png" id="2_dhxas"]
 [ext_resource type="PackedScene" uid="uid://c3bwqlncgf64g" path="res://scenes/hurt_box.tscn" id="3_cjgj1"]
 
@@ -292,16 +292,16 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_utmai"]
 _data = {
-"RESET": SubResource("Animation_l74b6"),
-"going_home": SubResource("Animation_vah8a"),
-"idle_down": SubResource("Animation_ejr3t"),
-"idle_left": SubResource("Animation_tspr8"),
-"idle_right": SubResource("Animation_cnirk"),
-"idle_up": SubResource("Animation_7xapm"),
-"move_down": SubResource("Animation_pg68v"),
-"move_left": SubResource("Animation_en2j6"),
-"move_right": SubResource("Animation_5hgih"),
-"move_up": SubResource("Animation_yjvtj")
+&"RESET": SubResource("Animation_l74b6"),
+&"going_home": SubResource("Animation_vah8a"),
+&"idle_down": SubResource("Animation_ejr3t"),
+&"idle_left": SubResource("Animation_tspr8"),
+&"idle_right": SubResource("Animation_cnirk"),
+&"idle_up": SubResource("Animation_7xapm"),
+&"move_down": SubResource("Animation_pg68v"),
+&"move_left": SubResource("Animation_en2j6"),
+&"move_right": SubResource("Animation_5hgih"),
+&"move_up": SubResource("Animation_yjvtj")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fu0c6"]
@@ -398,6 +398,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_i022p"]
 resource_name = "frightened"
 length = 0.001
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -461,11 +462,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8anbg"]
 _data = {
-"RESET": SubResource("Animation_uh0sa"),
-"frightened": SubResource("Animation_i022p"),
-"frightened_ending": SubResource("Animation_xxyu2"),
-"going_home": SubResource("Animation_xl3dj"),
-"normal": SubResource("Animation_6ds4d")
+&"RESET": SubResource("Animation_uh0sa"),
+&"frightened": SubResource("Animation_i022p"),
+&"frightened_ending": SubResource("Animation_xxyu2"),
+&"going_home": SubResource("Animation_xl3dj"),
+&"normal": SubResource("Animation_6ds4d")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_to6e0"]
@@ -492,13 +493,10 @@ frame = 48
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_utmai")
+&"": SubResource("AnimationLibrary_utmai")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_utmai")
-}
 tree_root = SubResource("AnimationNodeStateMachine_cow2b")
 anim_player = NodePath("../AnimationPlayer")
 parameters/idle/blend_position = Vector2(0, 0)
@@ -506,7 +504,7 @@ parameters/move/blend_position = Vector2(0, 0)
 
 [node name="ColorsAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8anbg")
+&"": SubResource("AnimationLibrary_8anbg")
 }
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("actor_to_hurt") instance=ExtResource("3_cjgj1")]
