@@ -2,15 +2,15 @@ extends Node
 class_name SharedEnemyAI
 
 
-@onready var tile_map: TileMap = get_tree().get_root().get_node("Level/TileMap")
-#@onready var tile_size: float = tile_map.get_tileset().get_tile_size().x
+@onready var tile_map_layer: TileMapLayer = get_tree().get_root().get_node("Level/TileMapLayer")
+#@onready var tile_size: float = tile_map_layer.get_tileset().get_tile_size().x
 
 
 var walkable_tiles_list: PackedVector2Array = []
 
 func build_walkable_tiles_list() -> void:
-	for tile in tile_map.get_used_cells(0):
-		var cell_tile_data: TileData = tile_map.get_cell_tile_data(0, tile)
+	for tile in tile_map_layer.get_used_cells():
+		var cell_tile_data: TileData = tile_map_layer.get_cell_tile_data(tile)
 		if cell_tile_data and cell_tile_data.get_custom_data("walkable"):
 			walkable_tiles_list.append(tile)
 

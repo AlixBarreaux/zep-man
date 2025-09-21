@@ -104,7 +104,7 @@ func go_to_next_scatter_point() -> void:
 func pick_random_destination_position() -> void:
 	randomize()
 	var random_index: int = randi() % shared_enemy_ai.walkable_tiles_list.size() - 1
-	set_destination_position(tile_map.map_to_local(shared_enemy_ai.walkable_tiles_list[random_index]))
+	set_destination_position(tile_map_layer.map_to_local(shared_enemy_ai.walkable_tiles_list[random_index]))
 
 
 @onready var enemies_home: Marker2D = get_tree().get_root().get_node("Level/AIWaypoints/EnemiesHome")
@@ -113,8 +113,8 @@ func pick_random_destination_position() -> void:
 @export var enemy: Enemy = null
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var tile_map: TileMap = get_tree().get_root().get_node("Level/TileMap")
-@onready var tile_size: float = tile_map.get_tileset().get_tile_size().x
+@onready var tile_map_layer: TileMapLayer = get_tree().get_root().get_node("Level/TileMapLayer")
+@onready var tile_size: float = tile_map_layer.get_tile_set().get_tile_size().x
 
 var destination_position: Vector2 = Vector2(0.0, 0.0)
 
