@@ -51,8 +51,9 @@ extends GdUnitTestSuite
 
 
 # TestSuite generated from
-const __source = '${source_resource_path}'
+const __source = \"${source_resource_path}\"
 "
+settings/test/test_discovery=true
 
 [gui]
 
