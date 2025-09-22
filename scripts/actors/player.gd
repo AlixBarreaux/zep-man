@@ -5,7 +5,7 @@ class_name Player
 @export var speed: float = 150.0
 @export var spawn_point: Marker2D = null
 
-@onready var spawn_position: Vector2 = spawn_point.global_position
+var spawn_position: Vector2 = Vector2(0.0, 0.0)
 
 var movement_input_vector: Vector2 = Vector2(0.0, 0.0)
 var initial_direction: Vector2 = Vector2(1.0, 0.0)
@@ -81,7 +81,8 @@ func on_finished_dying() -> void:
 
 
 func _ready() -> void:
-	assert(spawn_point != null)
+	if spawn_point != null:
+		spawn_position = spawn_point.get_global_position()
 	
 	Global.game_ready.connect(on_game_ready)
 	Global.game_started.connect(on_game_started)
